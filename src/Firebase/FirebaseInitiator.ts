@@ -2,11 +2,9 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
-import { firebaseConfig } from '@/credentials/Firebase'
+import { firebaseConfig } from '@/credentials/Firebase.ts'
 
 export const initiateFirebase = async () => {
-  const firebaseConfig = firebaseConfig
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig)
   const db = getFirestore(app)
