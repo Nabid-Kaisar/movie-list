@@ -1,6 +1,8 @@
+<script setup></script>
+
 <template>
   <div class="sticky-bottom">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Movie List Blink-SS_™</a>
         <button
@@ -23,7 +25,7 @@
               placeholder="Add Movie"
               aria-label="add movie"
             />
-            <button class="btn btn-outline-success">Add</button>
+            <button class="btn btn-primary">Add</button>
           </div>
         </div>
       </div>
