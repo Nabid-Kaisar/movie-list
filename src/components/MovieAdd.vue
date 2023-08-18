@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { MovieData } from '@/model/MovieData'
+import { addMovie, initiateFirebase } from '@/Firebase/FirebaseInitiator.js'
 
 const newMovieData = ref<MovieData>({
   movieName: '',
@@ -11,8 +12,23 @@ const newMovieData = ref<MovieData>({
   finishedWatching: false
 })
 
+onMounted(() => {
+  initiateFirebase()
+})
+
 const handleAddMovie = () => {
-  console.log('userInput', newMovieData.value)
+  console.log('userInput')
+  for (let key in newMovieData.value) {
+    console.log(typeof newMovieData.value[key])
+  }
+  console.log('calling firebase:: ')
+
+  addMovie(newMovieData.value)
+    .then((res) => {
+      console.log('res::', res)
+      // router.push('/')
+    })
+    .catch((err) => console.error('err::', err))
 }
 </script>
 
@@ -59,6 +75,7 @@ const handleAddMovie = () => {
     <div class="form-check mb-3">
       <input
         v-model="newMovieData.finishedWatching"
+        value="true"
         class="form-check-input"
         type="radio"
         name="flexRadioDefault"
@@ -68,7 +85,8 @@ const handleAddMovie = () => {
     </div>
     <div class="form-check mb-3">
       <input
-        v-model="newMovieData.downloadLink"
+        v-model="newMovieData.finishedWatching"
+        value="false"
         class="form-check-input"
         type="radio"
         name="flexRadioDefault"
