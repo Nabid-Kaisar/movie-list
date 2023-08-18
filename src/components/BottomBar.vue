@@ -18,13 +18,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Add Movie</a>
+            <a class="nav-link active" aria-current="page" href="/add">Add Movie</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Movie List</a>
+            <a class="nav-link" href="/">Movie List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="/about">About</a>
           </li>
         </ul>
       </div>

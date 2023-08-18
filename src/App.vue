@@ -9,7 +9,6 @@ import MovieList from '@/components/MovieList.vue'
 </script>
 
 <template>
-  <TopBar />
-  <MovieList />
+  <RouterView />
   <BottomBar />
 </template>
