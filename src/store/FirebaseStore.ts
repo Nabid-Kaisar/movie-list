@@ -21,6 +21,7 @@ export const initiateFirebase = async () => {
 }
 
 export const getMovieList = async () => {
+  console.log(console.log("firebaseConfig :: " , firebaseConfig);firebaseConfig)
   await initiateFirebase()
   const querySnapshot = await getDocs(collection(db.value, path))
   const moviesList = []
