@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { MovieData } from '@/model/MovieData'
 import { initiateFirebase, addMovie } from '@/store/FirebaseStore'
+import { openToast } from '@/util/util'
 
 const emptyMovieData = {
   movieName: '',
@@ -25,8 +26,12 @@ const handleAddMovie = async () => {
     .then((res) => {
       console.log('res::', res)
       newMovieData.value = emptyMovieData
+      openToast('Movie Added Successfully! :) ')
     })
-    .catch((err) => console.error('err::', err))
+    .catch((err) => {
+      console.error('err::', err)
+      openToast('Failed to add :( ')
+    })
 }
 </script>
 
