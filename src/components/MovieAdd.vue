@@ -1,32 +1,30 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { MovieData } from '@/model/MovieData'
-import { addMovie, initiateFirebase } from '@/Firebase/FirebaseInitiator.js'
+import { initiateFirebase, addMovie } from '@/store/FirebaseStore'
 
-const newMovieData = ref<MovieData>({
+const emptyMovieData = {
   movieName: '',
   releasedYear: '',
   imdbRating: '',
   letterboxdRating: '',
-  downloadLink: '',
+  other: '',
   finishedWatching: false
-})
+}
 
-onMounted(() => {
-  initiateFirebase()
-})
+const newMovieData = ref<MovieData>(emptyMovieData)
 
-const handleAddMovie = () => {
+const handleAddMovie = async () => {
   console.log('userInput')
   for (let key in newMovieData.value) {
     console.log(typeof newMovieData.value[key])
   }
   console.log('calling firebase:: ')
-
+  await initiateFirebase()
   addMovie(newMovieData.value)
     .then((res) => {
       console.log('res::', res)
-      // router.push('/')
+      newMovieData.value = emptyMovieData
     })
     .catch((err) => console.error('err::', err))
 }
@@ -63,14 +61,15 @@ const handleAddMovie = () => {
       placeholder="Letterboxd Rating"
       aria-label="Letterboxd Rating"
     />
-    <input
-      v-model="newMovieData.downloadLink"
-      class="form-control mb-3"
-      type="text"
-      placeholder="Download link"
-      aria-label="Download link"
-    />
-
+    <div class="form-floating mb-3">
+      <textarea
+        v-model="newMovieData.other"
+        class="form-control"
+        placeholder="Other information"
+        id="floatingTextarea"
+      ></textarea>
+      <label for="floatingTextarea">Other info</label>
+    </div>
     <h5 class="mb-3">Finished Watching?</h5>
     <div class="form-check mb-3">
       <input

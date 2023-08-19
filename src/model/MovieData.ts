@@ -3,7 +3,7 @@ export interface MovieData {
   releasedYear: string
   imdbRating: string
   letterboxdRating: string
-  downloadLink: string
+  downloadLink?: string
   finishedWatching: boolean
   isDownloaded?: boolean
   deviceContainsDownloadName?: string
