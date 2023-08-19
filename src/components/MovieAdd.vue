@@ -25,11 +25,11 @@ const handleAddMovie = async () => {
     .then((res) => {
       console.log('res::', res)
       newMovieData.value = emptyMovieData
-      openToast('Movie Added Successfully! :) ')
+      openToast('Movie Added Successfully! :) ', 'error')
     })
     .catch((err) => {
       console.error('err::', err)
-      openToast('Failed to add :( ')
+      openToast('Failed to add :( ', 'error')
     })
 }
 </script>

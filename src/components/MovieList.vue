@@ -21,7 +21,7 @@ const getDetailLink = (seqId) => `/detail/${seqId}`
           :to="getDetailLink(movie.seqId)"
           class="list-group-item list-group-item-action link-primary"
         >
-          <div class="text-decoration-none">{{ idx + 1 }} .</div>
+          <span class="text-decoration-none">{{ idx + 1 }} .</span>
           {{ movie.movieName }}
         </router-link>
       </div>

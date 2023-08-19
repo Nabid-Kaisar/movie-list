@@ -3,7 +3,7 @@
 <template>
   <nav class="fixed-bottom navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Movie List Blink-SS_™</a>
+      <a class="navbar-brand" href="/">Movie List Blink-SS_™</a>
       <button
         class="navbar-toggler"
         type="button"

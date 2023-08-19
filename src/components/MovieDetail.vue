@@ -31,6 +31,11 @@ onMounted(async () => {
       <p href="#" style="color: darkred" class="fw-bold">
         Imdb Rating: {{ movieDetail?.imdbRating }}
       </p>
+      <p href="#" style="color: darkred" class="fw-bold">
+        <span>Watched: </span>
+        <span style="color: green" v-if="movieDetail?.finishedWatching">Yes</span>
+        <span style="color: red" v-if="!movieDetail?.finishedWatching">No</span>
+      </p>
       <p />
     </div>
   </div>
