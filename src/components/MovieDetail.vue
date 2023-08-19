@@ -36,7 +36,7 @@ const handleChangeWatchedStatus = useDebounceFn(async () => {
 <template>
   <div class="m-3">
     <div class="">
-      <h5 class="text-center">{{ movieDetail?.movieName }}</h5>
+      <h5 class="text-center" style="color: var(--color-primary)">{{ movieDetail?.movieName }}</h5>
       <h6 class="mb-2 text-body-secondary text-center">
         {{ movieDetail?.releasedYear }}
       </h6>

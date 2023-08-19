@@ -13,13 +13,14 @@ const getDetailLink = (seqId) => `/detail/${seqId}`
 </script>
 
 <template>
-  <div class="m-3">
+  <div class="m-3 list-parent">
     <h2 class="text-center mb-3" style="color: var(--color-primary)">BLINK-SS MOVIES</h2>
     <div class="list-group">
       <div class="mb-2" :key="movie.seqId" v-for="(movie, idx) in moviesList">
         <router-link
           :to="getDetailLink(movie.seqId)"
-          class="list-group-item list-group-item-action link-primary"
+          class="list-group-item list-group-item-action link-primary rounded-3"
+          style="cursor: pointer"
         >
           <span class="text-decoration-none">{{ idx + 1 }} .</span>
           {{ movie.movieName }}
@@ -28,3 +29,10 @@ const getDetailLink = (seqId) => `/detail/${seqId}`
     </div>
   </div>
 </template>
+
+<style scoped>
+.list-parent {
+  max-height: calc(100vh - 110px);
+  overflow-y: scroll;
+}
+</style>

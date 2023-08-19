@@ -36,7 +36,7 @@ const handleAddMovie = async () => {
 
 <template>
   <section class="add-container m-3">
-    <h3>Add a new Movie to the List</h3>
+    <h3 class="text-center m-3" style="color: var(--color-primary)">Movie Add</h3>
     <input
       v-model="newMovieData.movieName"
       class="form-control mb-3"
