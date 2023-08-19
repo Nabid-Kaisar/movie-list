@@ -10,3 +10,4 @@ export interface MovieData {
   deviceContainsDownloadName?: string
   other?: string
 }
+// export type {MovieData}

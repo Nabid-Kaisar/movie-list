@@ -1,18 +1,36 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { getMovieDetail } from '@/store/FirebaseStore'
+import { getMovieDetail, movieEdit } from '@/store/FirebaseStore'
 import { MovieData } from '@/model/MovieData'
+import { useDebounceFn } from '@vueuse/core'
 
 const router = useRouter()
 const movieDetail = ref<MovieData>()
 
-onMounted(async () => {
-  const seqId = router.currentRoute.value.params?.seqId
+//make it computed
+const seqId = router.currentRoute.value.params?.seqId
+
+const fetchMovieDetail = async () => {
   if (seqId) {
     movieDetail.value = (await getMovieDetail(seqId)) as MovieData
   }
+}
+
+onMounted(() => {
+  fetchMovieDetail()
 })
+
+const handleChangeWatchedStatus = useDebounceFn(async () => {
+  const editedData = movieDetail.value
+  if (editedData) {
+    editedData.finishedWatching = !editedData?.finishedWatching
+  } else return
+
+  console.log('editedData :: ', editedData)
+  await movieEdit(seqId, editedData)
+  await fetchMovieDetail()
+}, 1000)
 </script>
 
 <template>
@@ -43,8 +61,8 @@ onMounted(async () => {
         style="background: var(--color-primary)"
         class="btn text-white"
       >
-        <span v-if="!movieDetail.value?.finishedWatching">I have watched the Movie</span>
-        <span v-else>I have not watched the Movie</span>
+        <span v-if="!movieDetail?.finishedWatching">I have watched the Movie!</span>
+        <span v-else>I have not watched the Movie!</span>
       </button>
       <p />
     </div>

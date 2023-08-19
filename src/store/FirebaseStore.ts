@@ -1,7 +1,8 @@
 import { ref } from 'vue'
 import { initializeApp } from 'firebase/app'
-import { getFirestore, addDoc, collection, getDocs, doc, getDoc } from 'firebase/firestore'
+import { getFirestore, addDoc, collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore'
 import { firebaseConfig } from '@/credentials/Firebase.ts'
+import type { MovieData } from '../model/MovieData.ts'
 
 export const app = ref()
 export const db = ref()
@@ -53,4 +54,11 @@ export const getMovieDetail = async (seqId) => {
     console.log('No such document!')
     return null
   }
+}
+
+export const movieEdit = async (seqId, editedData: MovieData) => {
+  await initiateFirebase()
+
+  const result = await setDoc(doc(db.value, path, seqId), editedData as any)
+  console.log('result of editing:: ', result)
 }
