@@ -24,6 +24,7 @@ export const getMovieList = async () => {
   const moviesList = []
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
+    doc.data().seqId = doc.id
     moviesList.push(doc.data())
   })
 

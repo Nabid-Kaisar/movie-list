@@ -12,7 +12,7 @@ const emptyMovieData = {
   finishedWatching: false
 }
 
-const newMovieData = ref<MovieData>(emptyMovieData)
+const newMovieData = ref<MovieData>({ ...emptyMovieData })
 
 const handleAddMovie = async () => {
   console.log('userInput')

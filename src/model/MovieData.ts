@@ -1,4 +1,5 @@
 export interface MovieData {
+  seqId?: string
   movieName: string
   releasedYear: string
   imdbRating: string

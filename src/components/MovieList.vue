@@ -13,7 +13,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1 :key="movie.movieName + idx" v-for="(movie, idx) in moviesList">
-    movie name {{ movie.movieName }}
-  </h1>
+  <h1 :key="movie.seqId" v-for="movie in moviesList">movie name {{ movie.movieName }}</h1>
 </template>
