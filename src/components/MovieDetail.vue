@@ -36,6 +36,16 @@ onMounted(async () => {
         <span style="color: green" v-if="movieDetail?.finishedWatching">Yes</span>
         <span style="color: red" v-if="!movieDetail?.finishedWatching">No</span>
       </p>
+
+      <button
+        @click="handleChangeWatchedStatus"
+        type="button"
+        style="background: var(--color-primary)"
+        class="btn text-white"
+      >
+        <span v-if="!movieDetail.value?.finishedWatching">I have watched the Movie</span>
+        <span v-else>I have not watched the Movie</span>
+      </button>
       <p />
     </div>
   </div>
