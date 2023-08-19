@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { MovieData } from '@/model/MovieData'
-import { initiateFirebase, addMovie } from '@/store/FirebaseStore'
+import { addMovie } from '@/store/FirebaseStore'
 import { openToast } from '@/util/util'
 
 const emptyMovieData = {
@@ -20,8 +20,7 @@ const handleAddMovie = async () => {
   for (let key in newMovieData.value) {
     console.log(typeof newMovieData.value[key])
   }
-  console.log('calling firebase:: ')
-  await initiateFirebase()
+
   addMovie(newMovieData.value)
     .then((res) => {
       console.log('res::', res)
